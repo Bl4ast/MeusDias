@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Pessoal</title>
-    <link rel="icon" type="image/png" href="assets/Logo.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -128,13 +127,13 @@
         </div>
 
         <div class="panel">
-            <!-- APENAS O SELETOR DE TEMAS (SEM O FORMULÁRIO DE CRIAÇÃO) -->
+            <!-- BLOCO DE TEMAS JÁ COMECARÁ FECHADO -->
             <div class="notion-block" style="margin-bottom: 20px;">
-                <h3 class="notion-heading collapsible-header" onclick="toggleCollapse('content-theme', this)">
+                <h3 class="notion-heading collapsible-header closed" onclick="toggleCollapse('content-theme', this)">
                     <span>[ 🎨 ] Temas</span>
                     <span class="collapse-arrow">▼</span>
                 </h3>
-                <div id="content-theme" class="collapsible-content">
+                <div id="content-theme" class="collapsible-content collapsed">
                     <div class="mini-form" style="margin-top: 10px;">
                         <select id="theme-selector"></select>
                     </div>
@@ -145,13 +144,13 @@
                 <span id="txt-badgeProd"></span> <span id="tasks-completed-count">0</span>
             </div>
 
-            <!-- PAINEL DE ROTINA COM BOTÃO DE RECOLHER (SETINHA) -->
+            <!-- BLOCO DE ROTINA JÁ COMECARÁ FECHADO -->
             <div class="notion-block" style="margin-top: 20px;">
-                <h3 class="notion-heading collapsible-header" onclick="toggleCollapse('content-routine', this)">
+                <h3 class="notion-heading collapsible-header closed" onclick="toggleCollapse('content-routine', this)">
                     <span>Configurar Rotina</span>
                     <span class="collapse-arrow">▼</span>
                 </h3>
-                <div id="content-routine" class="collapsible-content">
+                <div id="content-routine" class="collapsible-content collapsed">
                     <form id="form-routine" class="mini-form" style="margin-top: 10px;">
                         <div class="input-row">
                             <select id="routine-day">
