@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Pessoal</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="wallpaper-bg"></div>
+
+    <div class="dashboard">
+        <div class="panel">
+            <div class="info-badge" id="txt-badgeProfile"></div>
+            <img id="profile-img" class="character-art" alt="Perfil">
+            
+            <div class="notion-block">
+                <h3 class="red-title" id="txt-titleFinances"></h3>
+                <div class="finance-display">
+                    <div class="balance-box">
+                        <span class="label" id="txt-labelBalance"></span>
+                        <span class="value" id="total-balance">R$ 0,00</span>
+                    </div>
+                    <div class="finance-stats">
+                        <span class="income">▲ R$ <span id="total-income">0,00</span></span>
+                        <span class="expense">▼ R$ <span id="total-expense">0,00</span></span>
+                    </div>
+                </div>
+                
+                <form id="form-finance" class="mini-form">
+                    <input type="text" id="fin-desc" required>
+                    <div class="money-input-wrapper">
+                        <input type="number" id="fin-valor" placeholder="0,00" step="0.01" required>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" id="btn-recebi" class="btn-green txt-btnReceive"></button>
+                        <button type="button" id="btn-gastei" class="btn-red txt-btnSpend"></button>
+                    </div>
+                </form>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                    <h4 class="sub-heading" style="margin: 0;" id="txt-titleExtrato"></h4>
+                    <button type="button" onclick="clearExtrato()" style="background:transparent; border:none; color:var(--red-accent); font-size:0.7rem; cursor:pointer; padding:0;">[ Limpar Extrato ]</button>
+                </div>
+                <div class="extrato-container" style="margin-top: 5px;">
+                    <ul class="notion-list" id="lista-extrato"></ul>
+                </div>
+            </div>
+
+            <div class="notion-block" style="margin-top: 20px;">
+                <h3 class="red-title" id="txt-titleCommissions"></h3>
+                <form id="form-comm" class="mini-form">
+                    <input type="text" id="comm-title" required>
+                    <div class="input-row">
+                        <div class="money-input-wrapper">
+                            <input type="number" id="comm-val" placeholder="0,00" step="0.01" required>
+                        </div>
+                        <input type="date" id="comm-date" required>
+                    </div>
+                    <button type="submit" class="btn-red-outline" id="txt-btnCommAdd"></button>
+                </form>
+
+                <div class="comm-tabs">
+                    <button type="button" id="tab-aberto" class="tab-btn active txt-btnTabOpen" onclick="switchCommTab('aberto')"></button>
+                    <button type="button" id="tab-processo" class="tab-btn txt-btnTabProcess" onclick="switchCommTab('processo')"></button>
+                    <button type="button" id="tab-finalizada" class="tab-btn txt-btnTabDone" onclick="switchCommTab('finalizada')"></button>
+                </div>
+                
+                <div class="task-section" style="margin-top: 10px;">
+                    <ul class="notion-list" id="lista-comissoes"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2 class="main-title" id="txt-titleWorkspace"></h2>
+            
+            <iframe style="border-radius:14px; margin-bottom: 20px;" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+            <div class="notion-block" style="margin-bottom: 20px;">
+                <h3 class="notion-heading" id="txt-titleCalendar"></h3>
+                <div class="mini-calendar">
+                    <div class="calendar-head">
+                        <button type="button" id="cal-prev">❮</button>
+                        <span id="cal-month"></span>
+                        <button type="button" id="cal-next">❯</button>
+                    </div>
+                    <div class="calendar-days-names">
+                        <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+                    </div>
+                    <div class="calendar-grid" id="cal-grid"></div>
+                </div>
+            </div>
+
+            <div class="notion-block">
+                <h3 class="notion-heading" id="txt-titleAgenda"></h3>
+                <form id="form-schedule" class="mini-form">
+                    <input type="text" id="sch-title" required>
+                    <div class="input-row">
+                        <select id="sch-type">
+                            <option value="fixo">Fixo (Semanal)</option>
+                            <option value="unico">Único (Data)</option>
+                        </select>
+                        <input type="date" id="sch-date" required>
+                        <input type="time" id="sch-time" required>
+                    </div>
+                    <button type="submit" class="btn-red-outline" id="txt-btnAgendaAdd"></button>
+                </form>
+
+                <div class="schedule-container">
+                    <ul class="notion-list" id="lista-fixos"></ul>
+                    <ul class="notion-list" id="lista-unicos" style="margin-top:10px;"></ul>
+                </div>
+            </div>
+
+            <div class="notion-block" style="margin-top: 20px;">
+                <h3 class="notion-heading" id="txt-titleCollege"></h3>
+                <form id="form-college" class="mini-form">
+                    <input type="text" id="col-title" required>
+                    <input type="date" id="col-date" required>
+                    <button type="submit" class="btn-red-outline" id="txt-btnCollegeAdd"></button>
+                </form>
+                <div class="schedule-container">
+                    <ul class="notion-list" id="lista-faculdade"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="info-badge">
+                <span id="txt-badgeProd"></span> <span id="tasks-completed-count">0</span>
+            </div>
+
+            <div class="notion-block" style="margin-top: 20px;">
+                <h3 class="notion-heading">Configurar Rotina</h3>
+                <form id="form-routine" class="mini-form">
+                    <div class="input-row">
+                        <select id="routine-day">
+                            <option value="1">Segunda</option>
+                            <option value="2">Terça</option>
+                            <option value="3">Quarta</option>
+                            <option value="4">Quinta</option>
+                            <option value="5">Sexta</option>
+                            <option value="6">Sábado</option>
+                            <option value="0">Domingo</option>
+                        </select>
+                        <input type="text" id="routine-input" required>
+                    </div>
+                    <button type="submit" class="btn-red-outline" id="btn-add-routine">Adicionar na Rotina</button>
+                </form>
+                <div class="task-section">
+                    <h4 class="sub-heading">Rotina de: <span id="current-routine-day-label">Segunda</span></h4>
+                    <ul class="notion-list" id="lista-editar-rotina"></ul>
+                </div>
+            </div>
+
+            <div class="notion-block" style="margin-top: 20px;">
+                <h3 class="notion-heading" id="txt-titleTasks"></h3>
+                
+                <form id="form-task" class="mini-form">
+                    <input type="text" id="input-task" required>
+                    <button type="submit" class="btn-red-outline" id="txt-btnTaskAdd"></button>
+                </form>
+
+                <div class="task-section">
+                    <h4 class="sub-heading" id="txt-labelToday"></h4>
+                    <ul class="notion-list" id="lista-rotinas"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/assets.js"></script>
+    <script src="js/main.js"></script> 
+    <script src="js/calendar.js"></script> 
+    <script src="js/finances.js"></script>
+    <script src="js/commissions.js"></script>
+    <script src="js/schedule.js"></script>
+    <script src="js/college.js"></script>
+    <script src="js/routine.js"></script>
+    <script src="js/tasks.js"></script>
+</body>
+</html>
