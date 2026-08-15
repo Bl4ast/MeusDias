@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Pessoal</title>
+    <link rel="icon" type="image/png" href="assets/Logo.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -75,7 +76,7 @@
         <div class="panel">
             <h2 class="main-title" id="txt-titleWorkspace"></h2>
             
-            <iframe style="border-radius:14px; margin-bottom: 20px;" src="https://open.spotify.com/embed/playlist/6jgAw4tmq15qysPKlw8wyq?utm_source=generator&si=f2dccd1037cd4ca4" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:14px; margin-bottom: 20px;" src="https://open.spotify.com/embed/playlist/3ipKdo8W4ISCGPjrN30f2M?utm_source=generator&theme=0&si=94a5194cca9f4c28" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
             <div class="notion-block" style="margin-bottom: 20px;">
                 <h3 class="notion-heading" id="txt-titleCalendar"></h3>
@@ -127,30 +128,49 @@
         </div>
 
         <div class="panel">
+            <!-- APENAS O SELETOR DE TEMAS (SEM O FORMULÁRIO DE CRIAÇÃO) -->
+            <div class="notion-block" style="margin-bottom: 20px;">
+                <h3 class="notion-heading collapsible-header" onclick="toggleCollapse('content-theme', this)">
+                    <span>[ 🎨 ] Temas</span>
+                    <span class="collapse-arrow">▼</span>
+                </h3>
+                <div id="content-theme" class="collapsible-content">
+                    <div class="mini-form" style="margin-top: 10px;">
+                        <select id="theme-selector"></select>
+                    </div>
+                </div>
+            </div>
+
             <div class="info-badge">
                 <span id="txt-badgeProd"></span> <span id="tasks-completed-count">0</span>
             </div>
 
+            <!-- PAINEL DE ROTINA COM BOTÃO DE RECOLHER (SETINHA) -->
             <div class="notion-block" style="margin-top: 20px;">
-                <h3 class="notion-heading">Configurar Rotina</h3>
-                <form id="form-routine" class="mini-form">
-                    <div class="input-row">
-                        <select id="routine-day">
-                            <option value="1">Segunda</option>
-                            <option value="2">Terça</option>
-                            <option value="3">Quarta</option>
-                            <option value="4">Quinta</option>
-                            <option value="5">Sexta</option>
-                            <option value="6">Sábado</option>
-                            <option value="0">Domingo</option>
-                        </select>
-                        <input type="text" id="routine-input" required>
+                <h3 class="notion-heading collapsible-header" onclick="toggleCollapse('content-routine', this)">
+                    <span>Configurar Rotina</span>
+                    <span class="collapse-arrow">▼</span>
+                </h3>
+                <div id="content-routine" class="collapsible-content">
+                    <form id="form-routine" class="mini-form" style="margin-top: 10px;">
+                        <div class="input-row">
+                            <select id="routine-day">
+                                <option value="1">Segunda</option>
+                                <option value="2">Terça</option>
+                                <option value="3">Quarta</option>
+                                <option value="4">Quinta</option>
+                                <option value="5">Sexta</option>
+                                <option value="6">Sábado</option>
+                                <option value="0">Domingo</option>
+                            </select>
+                            <input type="text" id="routine-input" required>
+                        </div>
+                        <button type="submit" class="btn-red-outline" id="btn-add-routine">Adicionar na Rotina</button>
+                    </form>
+                    <div class="task-section">
+                        <h4 class="sub-heading">Rotina de: <span id="current-routine-day-label">Segunda</span></h4>
+                        <ul class="notion-list" id="lista-editar-rotina"></ul>
                     </div>
-                    <button type="submit" class="btn-red-outline" id="btn-add-routine">Adicionar na Rotina</button>
-                </form>
-                <div class="task-section">
-                    <h4 class="sub-heading">Rotina de: <span id="current-routine-day-label">Segunda</span></h4>
-                    <ul class="notion-list" id="lista-editar-rotina"></ul>
                 </div>
             </div>
 
@@ -169,6 +189,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleCollapse(contentId, headerEl) {
+            const content = document.getElementById(contentId);
+            if (!content) return;
+            
+            content.classList.toggle('collapsed');
+            headerEl.classList.toggle('closed');
+        }
+    </script>
 
     <script src="js/config.js"></script>
     <script src="js/assets.js"></script>
