@@ -40,9 +40,9 @@ function renderCalendar() {
         const dateStr = `${year}-${strMonth}-${strDay}`;
 
         let events = [];
-        collegeTasks.forEach(t => { if(t.date === dateStr) events.push(`🎓 ${t.title}`); });
-        commissions.forEach(c => { if(c.date === dateStr) events.push(`🎨 ${c.title}`); });
-        schedules.forEach(s => { if(s.date === dateStr) events.push(`📅 ${s.title}`); });
+        collegeTasks.forEach(t => { if(t.date === dateStr) events.push(` ${t.title}`); });
+        commissions.forEach(c => { if(c.date === dateStr) events.push(` ${c.title}`); });
+        schedules.forEach(s => { if(s.date === dateStr) events.push(` ${s.title}`); });
 
         if (events.length > 0) {
             const dot = document.createElement('div');
